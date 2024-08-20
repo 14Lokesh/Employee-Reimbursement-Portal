@@ -1,0 +1,2 @@
+class ReimbursementClaimsController < ApplicationController
+end
