@@ -1,4 +1,8 @@
 class EmployeesController < ApplicationController
+
+  def index
+    @employees  = Employee.ordered_by
+  end
   def new
     @employee = Employee.new
     @companies = Company.all 
@@ -8,12 +12,31 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
     if @employee.valid?
       @employee.save
-      redirect_to new_session_path, flash: { notice: 'Emplyoee created successfully' }
+      redirect_to employees_path, flash: { notice: 'Emplyoee created successfully' }
     else  
       flash[:notice] = 'Something went wrong'
       @companies = Company.all
       render :new
     end
+  end
+
+  def edit
+    @employee = Employee.find(params[:id])
+  end
+
+  def update
+    @employee = Employee.find(params[:id])
+    if @employee.update(employee_params)
+      redirect_to employees_path, notice: 'Employee was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @employee = Employee.find(params[:id])
+    @employee.destroy
+    redirect_to employees_path  , notice: 'Employee was successfully destroyed.'
   end
 
   private

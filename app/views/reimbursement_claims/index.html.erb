@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+    <h1 class="text-center">ReimbursementClaims Details</h1>
+    <% if @reimbursement_claims.present? %>
+            <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Employee</th>
+            <th>Company</th>
+            <th>Purpose</th>
+            <th>Amonut </th>
+            <th>Date of Expenditure</th>
+            <th colspan="2" class="text-center">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @reimbursement_claims.each do |reimbursement_claim| %>
+            <tr>
+              <td><%= reimbursement_claim.employee.name %></td>
+              <td><%= reimbursement_claim.employee.company.name %></td>
+              <td><%= reimbursement_claim.purpose %></td>
+              <td><%= number_to_currency(reimbursement_claim.amount, unit: "₹") %></td>
+              <td><%= reimbursement_claim.date_of_expenditure %></td>
+              <td><%= link_to 'Edit', edit_reimbursement_claim_path(reimbursement_claim), class: 'btn btn-warning btn-sm' %></td>
+              <td><%= button_to 'Destroy', reimbursement_claim_path(reimbursement_claim), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+      <% else %>
+      <b> <%=  "NO RECORD AVAILABLE" %> </b> 
+      <% end %>
+    </div>
+  </div>
+</div>
