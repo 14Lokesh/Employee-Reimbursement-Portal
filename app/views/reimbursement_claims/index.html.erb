@@ -12,6 +12,7 @@
             <th>Purpose</th>
             <th>Amonut </th>
             <th>Date of Expenditure</th>
+            <th>Receipt</th>
             <th colspan="2" class="text-center">Actions</th>
           </tr>
         </thead>
@@ -24,6 +25,13 @@
               <td><%= reimbursement_claim.purpose %></td>
               <td><%= number_to_currency(reimbursement_claim.amount, unit: "₹") %></td>
               <td><%= reimbursement_claim.date_of_expenditure %></td>
+              <td>
+                <% if reimbursement_claim.receipt.attached? %>
+                  <%= link_to 'Download Receipt', rails_blob_path(reimbursement_claim.receipt, disposition: "attachment"), target: '_blank' %>
+                <% else %>
+                  No receipt
+                <% end %>
+              </td>
               <td><%= link_to 'Edit', edit_reimbursement_claim_path(reimbursement_claim), class: 'btn btn-warning btn-sm' %></td>
               <td><%= button_to 'Destroy', reimbursement_claim_path(reimbursement_claim), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
             </tr>

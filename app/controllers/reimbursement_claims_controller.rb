@@ -42,6 +42,6 @@ class ReimbursementClaimsController < ApplicationController
   private
 
   def reimbursement_claim_params
-    params.require(:reimbursement_claim).permit(:purpose, :amount, :date_of_expenditure, :employee_id)
+    params.require(:reimbursement_claim).permit(:purpose, :amount, :date_of_expenditure, :employee_id, :receipt)
   end
 end

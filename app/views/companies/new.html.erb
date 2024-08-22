@@ -17,7 +17,7 @@
         <div class="form-group">
           <%= form.label :total_reimbursement, class: 'required' %>
           <%= form.text_field :total_reimbursement, class: "form-control", placeholder: "Enter Total Reimbursement", required: true%>
-           <p class='error'><%= show_errors(@company, :password) %></p>
+           <p class='error'><%= show_errors(@company, :total_reimbursement) %></p>
 
         </div>
         <%= form.submit "Submit", class: " mt-3 button-design form-control" %>
