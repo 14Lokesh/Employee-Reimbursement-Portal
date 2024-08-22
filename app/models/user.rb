@@ -10,4 +10,14 @@ class User < ApplicationRecord
   uniqueness: { case_sensitive: false } 
   
   validates :password, presence: true 
+
+  def self.from_omniauth(auth)
+    user = find_by(email: auth.info.email)
+    user ||= User.create(
+      name: auth.info.name,
+      email: auth.info.email,
+      password: SecureRandom.alphanumeric(10)
+    )
+    user
+  end
 end

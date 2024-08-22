@@ -43,6 +43,10 @@ gem "bootsnap", require: false
 
 gem "bcrypt", "~> 3.1.7"
 gem "pry"
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+gem 'dotenv-rails'
 
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]

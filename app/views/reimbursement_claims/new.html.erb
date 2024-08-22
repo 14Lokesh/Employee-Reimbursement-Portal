@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <h1 class="text-center">ReimbursementClaim</h1>
+      <%= form_for @reimbursement_claim, class: "my-form" do |form| %>
+
+        <div class="form-group">
+          <%= form.label :employee_id, "Employee", class: 'required' %>
+          <%= form.collection_select :employee_id, @employees, :id, :name, prompt: "Select an employee", required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :purpose, class: 'required' %>
+          <%= form.text_field :purpose, class: "form-control", placeholder: "Enter Purpose" , required: true%>
+          <p class='error'><%= show_errors(@reimbursement_claim, :name) %></p>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :amount, class: 'required' %>
+          <%= form.text_field :amount, class: "form-control", placeholder: "Enter Amount", required: true%>
+          <p class='error'><%= show_errors(@reimbursement_claim, :email) %></p>
+        </div>
+        <div class="form-group">
+          <%= form.label :date_of_expenditure, class: 'required' %>
+          <%= form.date_field :date_of_expenditure, class: "form-control", placeholder: "Enter Date", required: true%>
+           <p class='error'><%= show_errors(@reimbursement_claim, :password) %></p>
+        </div>
+        <%= form.submit "Sign Up", class: " mt-3 button-design form-control" %>
+      <% end %>
+    </div>
+  </div>
+</div>
