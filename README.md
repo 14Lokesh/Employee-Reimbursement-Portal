@@ -4,8 +4,8 @@ In config/database.yml, change the username and password for database
 
 Run these command on terminal
 
-rails db:setup
-rails db:migrate
-bundle install
-run the command to start the server - rails s
+1. rails db:setup
+2. rails db:migrate
+3. bundle install
+4. run the command to start the server - rails s
 
