@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_action :require_user_logged_in!
 
   def index
     @companies = Company.ordered_by
@@ -15,7 +16,7 @@ class CompaniesController < ApplicationController
       redirect_to companies_path, flash: { notice: 'Company created successfully' }
     else  
       flash[:notice] = 'Something went wrong'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

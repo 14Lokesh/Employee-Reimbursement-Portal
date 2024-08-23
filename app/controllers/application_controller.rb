@@ -10,8 +10,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
- 
-  def require_user_logged_in
+  def require_user_logged_in!
     redirect_to new_session_path, flash: { notice: 'Kindly login' } if @current_user.nil?
   end
 end

@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  before_action :require_user_logged_in!
 
   def index
     @employees  = Employee.ordered_by
@@ -16,7 +17,7 @@ class EmployeesController < ApplicationController
     else  
       flash[:notice] = 'Something went wrong'
       @companies = Company.all
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

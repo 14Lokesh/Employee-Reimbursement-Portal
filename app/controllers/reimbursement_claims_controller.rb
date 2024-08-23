@@ -1,4 +1,6 @@
 class ReimbursementClaimsController < ApplicationController
+  before_action :require_user_logged_in!
+
   def index
     @reimbursement_claims = ReimbursementClaim.ordered_by
   end
@@ -16,7 +18,7 @@ class ReimbursementClaimsController < ApplicationController
       redirect_to reimbursement_claims_path, notice: 'Reimbursement claim was successfully created.'
     else
       @employees = Employee.all
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

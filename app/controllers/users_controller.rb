@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       redirect_to new_session_path, flash: { notice: 'Sign up successfully' }
     else  
       flash[:notice] = 'Something went wrong'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
