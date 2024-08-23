@@ -270,6 +270,8 @@ GEM
     regexp_parser (2.9.2)
     reline (0.5.9)
       io-console (~> 0.5)
+    render_build_setup (0.0.1)
+      rails (>= 6.0)
     rexml (3.3.5)
       strscan
     rubyzip (2.3.2)
@@ -343,6 +345,7 @@ DEPENDENCIES
   pry
   puma (>= 5.0)
   rails (~> 7.1.0)
+  render_build_setup (~> 0.0.1)
   selenium-webdriver
   sprockets-rails
   stimulus-rails

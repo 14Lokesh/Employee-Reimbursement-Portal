@@ -78,3 +78,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "render_build_setup", "~> 0.0.1"
